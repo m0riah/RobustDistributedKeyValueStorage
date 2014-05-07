@@ -1,0 +1,64 @@
+<!-- 
+Ant build file for Spring 2013 TCSS 558 Homework 3
+-->
+
+<project name="TCSS 558 Homework 3" default="compile" basedir=".">
+	<description>
+    The build file for TCSS 558 Homework 3.
+  </description>
+
+	<property name="src" location="src" />
+	<property name="bin" location="bin" />
+	<property name="docs" location="docs" />
+
+	<target name="compile">
+		<mkdir dir="${bin}" />
+		<javac includeantruntime="false" srcdir="${src}" destdir="${bin}" />
+	</target>
+
+	<target name="clean">
+		<delete dir="${bin}" />
+		<delete dir="${docs}/api" />
+	</target>
+
+	<target name="rmiregistry" depends="compile">
+		<java fork="true" classpath="bin" classname="kvsnode.RemoteRegistry">
+			<arg value="8005" />
+		</java>
+	</target>
+	
+	<target name="kvsnode" depends="compile">
+		<java fork="true" classpath="bin" classname="kvsnode.ActualKVSNodeImpl">
+			<arg value="config.properties" />
+		</java>
+	</target>
+
+	<target name="kvsclient" depends="compile">
+		<java fork="true" classpath="bin" classname="kvsclient.KVSTestClient">
+			<arg value="" />
+		</java>
+	</target>
+
+	<target name="kvsstoretest" depends="compile">
+		<java fork="true" classpath="bin" classname="kvsclient.KVSClientStoreTest">
+			<arg value="" />
+		</java>
+	</target>
+
+	<target name="kvsretrievetest" depends="compile">
+		<java fork="true" classpath="bin" classname="kvsclient.KVSClientRetrieveTest">
+			<arg value="" />
+		</java>
+	</target>
+	
+	<target name="kvsremove" depends="compile">
+			<java fork="true" classpath="bin" classname="kvsclient.KVSClientRemoveNodeTest">
+				<arg value="200" />
+			</java>
+		</target>
+
+	<target name="javadoc">
+		<mkdir dir="${docs}/api" />
+		<javadoc sourcepath="${src}" destdir="${docs}/javadoc" access="private" />
+	</target>
+</project>
