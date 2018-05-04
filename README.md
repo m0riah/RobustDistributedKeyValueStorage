@@ -9,6 +9,6 @@
   `ant compile` then `ant kvsnode`
 For example, when you want to run a kvsnode as a first actual node in the ring before the Key Value Store system up, you need to setup the file (m=<any m which will generate 2^m node>, buildKVS=y, rmihost=<host name>, rmiport=<rmi port number>, nodeid=<the node id you want, which is nodeid <2^m>).
 
-More detailed specifications are in the ~/docs folder. The folder has a documentations named Assignment 3~5_DesignDocument.pdf. The Assignment 5_DesignDocument.pdf describes the finalized version of the RobustDistributedKeyValueSotrage.
-
-### More specific information about the project, design and executions are in ~/docs
+### More details
+More detailed specifications are in the /docs folder. 
+This project was implemented as a college assignment. The folder has a documentations named Assignment 3~5_DesignDocument.pdf. The Assignment 5_DesignDocument.pdf describes the finalized version of the RobustDistributedKeyValueSotrage.
